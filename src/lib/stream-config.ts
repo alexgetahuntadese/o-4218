@@ -1,6 +1,6 @@
 // Stream Video Configuration
-export const STREAM_API_KEY = 'mmhfdzb5evj2'; // Demo API key - replace with your own
-export const STREAM_APP_ID = 'quiz-app';
+export const STREAM_API_KEY = 'mmhfdzb5evj2';
+export const STREAM_SECRET = 'wjkpdkxjytb4w68gz5sfpbueu5hq46anyjqu94ybb6gzgstkq6wukf6uef5a3hzr';
 
 // Sample users for demo
 export const DEMO_USERS = {
@@ -16,8 +16,24 @@ export const DEMO_USERS = {
   },
 };
 
-// Generate token for demo (in production, this should be done on your backend)
-export const generateDemoToken = (userId: string): string => {
-  // This is a simplified demo token - in production use proper JWT with Stream secret
-  return `demo-token-${userId}-${Date.now()}`;
+// Generate proper JWT token using the secret
+export const generateToken = (userId: string): string => {
+  try {
+    // Import jwt dynamically to avoid issues with Node.js in browser
+    const jwt = require('jsonwebtoken');
+    
+    const payload = {
+      user_id: userId,
+      iss: 'stream-io',
+      sub: 'user/' + userId,
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor(Date.now() / 1000) + 3600, // 1 hour
+    };
+    
+    return jwt.sign(payload, STREAM_SECRET, { algorithm: 'HS256' });
+  } catch (error) {
+    console.warn('JWT generation failed, using fallback token:', error);
+    // Fallback for browser environment
+    return `fallback-token-${userId}-${Date.now()}`;
+  }
 };

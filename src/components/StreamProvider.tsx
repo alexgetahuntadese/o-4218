@@ -1,6 +1,6 @@
 import { StreamVideo, StreamVideoClient, User } from '@stream-io/video-react-sdk';
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { STREAM_API_KEY, DEMO_USERS, generateDemoToken } from '@/lib/stream-config';
+import { STREAM_API_KEY, DEMO_USERS, generateToken } from '@/lib/stream-config';
 
 interface StreamContextType {
   client: StreamVideoClient | null;
@@ -36,7 +36,7 @@ export const StreamProvider = ({ children, userId = 'student1' }: StreamProvider
     const initializeStream = async () => {
       try {
         const selectedUser = DEMO_USERS[userId as keyof typeof DEMO_USERS] || DEMO_USERS.student1;
-        const token = generateDemoToken(selectedUser.id);
+        const token = generateToken(selectedUser.id);
 
         const streamClient = new StreamVideoClient({
           apiKey: STREAM_API_KEY,
