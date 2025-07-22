@@ -1,5 +1,5 @@
 import { QuizHeader } from "@/components/QuizHeader";
-import { VideoWindows } from "@/components/VideoWindows";
+import { FunctionalVideoWindows } from "@/components/FunctionalVideoWindows";
 import { QuizQuestion } from "@/components/QuizQuestion";
 import { QuizProgress } from "@/components/QuizProgress";
 import { QuizResults } from "@/components/QuizResults";
@@ -27,7 +27,7 @@ const Index = () => {
         totalQuestions={totalQuestions}
       />
       
-      <VideoWindows />
+      <FunctionalVideoWindows callId="quiz-study-session" />
       
       <main className="pt-6 pb-8 px-4">
         <div className="max-w-6xl mx-auto">
