@@ -52,6 +52,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				quiz: {
+					bg: 'hsl(var(--quiz-bg))',
+					card: 'hsl(var(--quiz-card))',
+					question: 'hsl(var(--quiz-question))',
+					option: 'hsl(var(--quiz-option))',
+					'option-hover': 'hsl(var(--quiz-option-hover))',
+					'option-selected': 'hsl(var(--quiz-option-selected))',
+					correct: 'hsl(var(--quiz-correct))',
+					incorrect: 'hsl(var(--quiz-incorrect))',
+					'timer-warning': 'hsl(var(--timer-warning))',
+					'video-border': 'hsl(var(--video-border))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

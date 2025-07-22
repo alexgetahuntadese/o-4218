@@ -1,12 +1,65 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { QuizHeader } from "@/components/QuizHeader";
+import { VideoWindows } from "@/components/VideoWindows";
+import { QuizQuestion } from "@/components/QuizQuestion";
+import { QuizProgress } from "@/components/QuizProgress";
+import { QuizResults } from "@/components/QuizResults";
+import { useQuiz } from "@/hooks/useQuiz";
 
 const Index = () => {
+  const {
+    currentQuestion,
+    currentQuestionIndex,
+    totalQuestions,
+    score,
+    answers,
+    showResults,
+    timeRemaining,
+    isQuizCompleted,
+    answerQuestion,
+    resetQuiz,
+  } = useQuiz();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-quiz-bg">
+      <QuizHeader 
+        timeRemaining={timeRemaining}
+        questionNumber={currentQuestionIndex + 1}
+        totalQuestions={totalQuestions}
+      />
+      
+      <VideoWindows />
+      
+      <main className="pt-6 pb-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          {!isQuizCompleted ? (
+            <>
+              <QuizProgress 
+                currentQuestion={currentQuestionIndex + 1}
+                totalQuestions={totalQuestions}
+                score={score}
+              />
+              
+              {currentQuestion && (
+                <QuizQuestion
+                  question={currentQuestion.question}
+                  options={currentQuestion.options}
+                  onAnswer={answerQuestion}
+                  showResults={showResults}
+                  selectedAnswer={answers[currentQuestion.id]}
+                />
+              )}
+            </>
+          ) : (
+            <div className="flex items-center justify-center min-h-[60vh]">
+              <QuizResults
+                score={score}
+                totalQuestions={totalQuestions}
+                onRestart={resetQuiz}
+              />
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 };
