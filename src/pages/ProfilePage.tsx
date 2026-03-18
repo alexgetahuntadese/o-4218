@@ -103,12 +103,7 @@ const ProfilePage = () => {
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
-            {user?.email && (
-              <div className="flex items-center gap-2 p-3 bg-white/[0.04] rounded-lg border border-white/[0.08]">
-                <Mail className="h-4 w-4 text-white/40" />
-                <span className="text-sm text-white/60">{user.email}</span>
-              </div>
-            )}
+            
             
             <div className="space-y-2">
               <Label htmlFor="name" className="text-white">{t('profile.studentName')}</Label>
