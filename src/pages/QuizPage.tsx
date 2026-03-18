@@ -596,7 +596,14 @@ const QuizPage = () => {
             <div className="text-sm text-white/40">
               Question {currentQuestionIndex + 1} of {questions.length}
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
+              <InviteFriendButton
+                subject={subject}
+                chapter={chapterId}
+                difficulty={difficulty}
+                grade={grade}
+                playerName=""
+              />
               {!revealedAnswers.has(currentQuestionIndex) && (
                 <Button
                   onClick={handleShowAnswer}
