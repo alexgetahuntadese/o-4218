@@ -26,7 +26,7 @@ import TopBar from "@/components/TopBar";
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const { user } = useAuth();
+  
   const [name, setName] = useState('');
   const [quizCount, setQuizCount] = useState(0);
   const [loading, setLoading] = useState(true);

@@ -42,10 +42,8 @@ const Index = () => {
 
   // Migrate local data on first login
   useEffect(() => {
-    if (user) {
-      migrateLocalDataToDb();
-    }
-  }, [user]);
+    migrateLocalDataToDb();
+  }, []);
 
   const testimonials = [
     { name: "Abigail Tesfaye", subject: "Biology", quote: "This app helped me score 95% on my national exam! The practice questions are spot on." },
