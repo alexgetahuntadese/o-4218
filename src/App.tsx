@@ -23,6 +23,7 @@ import MatricExamPage from "./pages/MatricExamPage";
 import MatricYearPage from "./pages/MatricYearPage";
 import MatricQuizPage from "./pages/MatricQuizPage";
 import RoomPage from "./pages/RoomPage";
+import JoinPage from "./pages/JoinPage";
 
 const queryClient = new QueryClient();
 
